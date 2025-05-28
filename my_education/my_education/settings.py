@@ -118,7 +118,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 # Укажите ваш домен PythonAnywhere
-ALLOWED_HOSTS = ['yourusername.pythonanywhere.com', 'localhost']
+ALLOWED_HOSTS = ['TAKonovalova.pythonanywhere.com', 'localhost']
 
 # Настройки для статики
 STATIC_URL = '/static/'

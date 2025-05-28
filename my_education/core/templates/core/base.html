@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Я и мое обучение в Вышке</title>
+    <style>
+        nav {
+            background: #f0f0f0;
+            padding: 10px;
+            display: flex;
+            gap: 15px;
+        }
+        .nav-item {
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+        .nav-item:hover {
+            background-color: #e0e0e0;
+        }
+        .nav-item.active {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+        }
+        .person-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .person-img {
+            max-width: 150px;
+            border-radius: 50%;
+            margin-right: 20px;
+            float: left;
+        }
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Я и мое обучение в Вышке</h1>
+        <nav>
+            {% for nav_page in nav_pages %}
+                <a class="nav-item {% if nav_page.slug == current_slug %}active{% endif %}" 
+                   href="{% url 'core:page_detail' nav_page.slug %}">
+                    {{ nav_page.nav_title }}
+                </a>
+            {% endfor %}
+        </nav>
+    </header>
+    
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    
+    <footer>
+        <p>&copy; {% now "Y" %} НИУ ВШЭ</p>
+    </footer>
+</body>
+</html>

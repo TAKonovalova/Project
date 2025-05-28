@@ -1,0 +1,52 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+    <h2>{{ page.title }}</h2>
+    <div>{{ page.content|linebreaks }}</div>
+    
+    {% if me %}
+        <div class="person-card">
+            <h3>Обо мне</h3>
+            <img class="person-img" src="{{ me.photo.url }}" alt="{{ me.full_name }}">
+            <p><strong>{{ me.full_name }}</strong></p>
+            <p>Email: {{ me.email }}</p>
+            <p>Телефон: {{ me.phone }}</p>
+            {% if me.resume %}
+                <a href="{{ me.resume.url }}">Скачать резюме</a>
+            {% endif %}
+            <p>{{ me.description }}</p>
+        </div>
+    {% endif %}
+    
+    {% if leader %}
+        <div class="person-card">
+            <h3>Академический руководитель</h3>
+            <img class="person-img" src="{{ leader.photo.url }}" alt="{{ leader.full_name }}">
+            <p><strong>{{ leader.full_name }}</strong></p>
+            <p>Email: {{ leader.email }}</p>
+        </div>
+    {% endif %}
+    
+    {% if managers %}
+        <h3>Менеджеры программы</h3>
+        {% for manager in managers %}
+            <div class="person-card">
+                <img class="person-img" src="{{ manager.photo.url }}" alt="{{ manager.full_name }}">
+                <p><strong>{{ manager.full_name }}</strong></p>
+                <p>Email: {{ manager.email }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+    
+    {% if classmates %}
+        <h3>Мои сокурсники</h3>
+        {% for classmate in classmates %}
+            <div class="person-card">
+                <img class="person-img" src="{{ classmate.photo.url }}" alt="{{ classmate.full_name }}">
+                <p><strong>{{ classmate.full_name }}</strong></p>
+                <p>Email: {{ classmate.email }}</p>
+                <p>Телефон: {{ classmate.phone }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
